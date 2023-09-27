@@ -24,5 +24,5 @@ def directkinematic4(teta, d, a, alfa):
     A56 = denavit(teta[5], d[5], a[5], alfa[5])
 
     # Transformation matrix from the first to the last coordinate system
-    A06 = np.dot(np.dot(np.dot(A01, A12), A23), A34)
+    A06 = np.dot(np.dot(np.dot(np.dot(np.dot(A01, A12), A23), A34), A45), A56)
     return A06
