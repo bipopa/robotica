@@ -2,7 +2,7 @@
 #COMPLETO
 #SIN ERRORES
 import numpy as np
-from inversekinematic4 import inversekinematic4
+from inversekinematic import cinematica_inversa_centauri
 
 def planifica4(p1, p2, n, s, a, npuntos,teta,d,al,alfa):
     # Cálculo del vector unitario
@@ -23,7 +23,7 @@ def planifica4(p1, p2, n, s, a, npuntos,teta,d,al,alfa):
         Tr = np.array([n, s, a, p]).T
         # Cálculo de las coordenadas articulares
        
-        q = inversekinematic4(Tr,teta,d,al,alfa)
+        q = cinematica_inversa_centauri(Tr,teta,d,al,alfa)
         mat_q[:, i] = q.flatten()
         #print(q)
         #input()

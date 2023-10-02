@@ -1,16 +1,12 @@
-
-#Completo
-#SIN ERRORES
-
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-from denavit import denavit
+from denavit import Tdh
 from drawrobot3d4 import drawrobot3d4
 import time
 #Este metodo permite visualizar el metodo del robot
 def animacion4(mat_q,teta,d,a,alfa,ax,p,t):
-    # Parámetros Denavit-Hartenberg del robot
+    # Parámetros Tdh-Hartenberg del robot
     # d = np.array([0.315, 0, 0, 0.5, 0, 0.08])
     # a = np.array([0, 0.45, 0, 0, 0, 0])
     # alfa = np.array([-np.pi/2, 0, np.pi/2, -np.pi/2, np.pi/2, 0])
@@ -32,12 +28,12 @@ def animacion4(mat_q,teta,d,a,alfa,ax,p,t):
         #drawrobot3d4(teta, d, a, alfa)
         #input()
         # Matrices de transformación del primer sistema al correspondiente
-        A01 = denavit(teta[0], d[0], a[0], alfa[0])
-        A12 = denavit(teta[1], d[1], a[1], alfa[1])
-        A23 = denavit(teta[2], d[2], a[2], alfa[2])
-        A34 = denavit(teta[3], d[3], a[3], alfa[3])
-        A45 = denavit(teta[4], d[4], a[4], alfa[4])
-        A56 = denavit(teta[5], d[5], a[5], alfa[5])
+        A01 = Tdh(teta[0], d[0], a[0], alfa[0])
+        A12 = Tdh(teta[1], d[1], a[1], alfa[1])
+        A23 = Tdh(teta[2], d[2], a[2], alfa[2])
+        A34 = Tdh(teta[3], d[3], a[3], alfa[3])
+        A45 = Tdh(teta[4], d[4], a[4], alfa[4])
+        A56 = Tdh(teta[5], d[5], a[5], alfa[5])
     # Matrices de transformación del primer sistema al correspondiente
         A02 = np.dot(A01, A12)
         A03 = np.dot(A02, A23)
