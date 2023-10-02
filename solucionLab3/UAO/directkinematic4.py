@@ -1,6 +1,6 @@
 """ 
 DIRECTKINEMATIC4 Direct Kinematic.
-A06 = DIRECTKINEMATIC4(Q) devuelve la matriz de transformación del
+A04 = DIRECTKINEMATIC4(Q) devuelve la matriz de transformación del
 primer sistema de coordenadas al último en función del vector Q 
 de variables articulares
  """
@@ -20,9 +20,7 @@ def directkinematic4(teta, d, a, alfa):
     A12 = denavit(teta[1], d[1], a[1], alfa[1])
     A23 = denavit(teta[2], d[2], a[2], alfa[2])
     A34 = denavit(teta[3], d[3], a[3], alfa[3])
-    A45 = denavit(teta[4], d[4], a[4], alfa[4])
-    A56 = denavit(teta[5], d[5], a[5], alfa[5])
-
+    
     # Transformation matrix from the first to the last coordinate system
-    A06 = np.dot(np.dot(np.dot(np.dot(np.dot(A01, A12), A23), A34), A45), A56)
-    return A06
+    A04 = np.dot(np.dot(np.dot(A01, A12), A23), A34)
+    return A04

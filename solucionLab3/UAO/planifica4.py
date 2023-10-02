@@ -1,6 +1,3 @@
-
-#COMPLETO
-#SIN ERRORES
 import numpy as np
 from inversekinematic4 import inversekinematic4
 

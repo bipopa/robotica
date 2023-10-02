@@ -1,9 +1,0 @@
-Cinematica directa del centauri en python
-
-1. Para ejecutar el programa hay que ejecutar el usoDraw4.py 
-2. si se quiere cambiar los angulos de los joints dentro de usoDraw4.py cambiar los valores del arreglo q 
-3. si quiere ver un cambio de la posición es necesario colocar adicionalmente después de los q la función "drawrobot3d4(teta, d, a, alfa)", no hay que modificar
-
-NOTA:
-*Para ver la cinematica es necesario tener todos los archivos en la misma carpeta
-*Para ver el funcionamiento solo es necesesario modificar el archivo usoDraw4.py 
