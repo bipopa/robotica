@@ -5,9 +5,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from denavit import denavit
+from directkinematic import T56,T45,T34,T23,T12,T01,cdirecta_centauri
 
+def drawrobot3d4(q,l0, l1, l2, l3):
 
-def drawrobot3d4(teta, d, a, alfa):
+    cdirecta_centauri(q,l0,l1,l2,l3)
+    
     # Parámetros Denavit-Hartenberg del robot
     #q = [1, 1, 1, 1]
     #teta = [q[0], 0, 0, q[3]]
@@ -15,12 +18,12 @@ def drawrobot3d4(teta, d, a, alfa):
     #a = [0, -0.1, 0, 0]
     #alfa = [0, -np.pi/2, 0, 0]
     # Matrices de transformación homogénea entre sistemas de coordenadas consecutivos
-    A01 = denavit(teta[0], d[0], a[0], alfa[0])
-    A12 = denavit(teta[1], d[1], a[1], alfa[1])
-    A23 = denavit(teta[2], d[2], a[2], alfa[2])
-    A34 = denavit(teta[3], d[3], a[3], alfa[3])
-    A45 = denavit(teta[4], d[4], a[4], alfa[4])
-    A56 = denavit(teta[5], d[5], a[5], alfa[5])
+    A01 = T01(q,l0)
+    A12 = T12(q,l1)
+    A23 = T23(q)
+    A34 = T34(q,l2)
+    A45 = T45(q)
+    A56 = T56(q,l3)
     # Matrices de transformación del primer sistema al correspondiente
     A02 = np.dot(A01, A12)
     A03 = np.dot(A02, A23)
