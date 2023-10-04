@@ -3,7 +3,7 @@
 #SIN ERRORES
 
 from planifica4 import planifica4
-from animacion4 import animacion4
+from animacion import animacion4
 import numpy as np
 from inversekinematic import cinematica_inversa_centauri
 from directkinematic import cdirecta_centauri
@@ -34,14 +34,16 @@ s=[0, 1, 0]
 a=[0, 0, 1]
 npuntos=20
 
-q = [0, np.pi/2, 0, 0,np.pi/2,0]
+l0 = 0.17                              # Longitud eslabón 1
+l1 = 0.22                               # Longitud eslabón 2
+l2 = 0.22                               # Longitud eslabón 3 
+l3 = 0.1
+q = [np.deg2rad(45.001), np.deg2rad(13), np.deg2rad(40), np.deg2rad(180),np.deg2rad(0.01), np.deg2rad(-40.001)]    # Vl1ores articulares
+print(q)
 
-teta = np.array([q[0], q[1], q[2], q[3],q[4],q[5]])
-d = np.array([0.223, 0, 0, 0.172, 0,0.1052])
-al = np.array([0, 0.083, 0, 0, 0, 0])
-alfa = np.array([np.pi/2, 0, np.pi/2, np.pi/2, np.pi/2, 0])
-drawrobot3d4(teta, d, al, alfa)
-A04 = directkinematic4(teta, d, al, alfa)
+
+drawrobot3d4(q, l0, l1, l2,l3)
+TF = cdirecta_centauri(q, l0, l1, l2,l3)
 
 
 x0, y0, z0 = 0, 0, 0
@@ -59,45 +61,46 @@ ax.grid(True)
 ax.set_xlim3d([-1, 1])
 ax.set_ylim3d([-1, 1])
 ax.set_zlim3d([0, 1.5])
-    # Mantiene el gráfico actual
+    # Mantiene el gráfico actul1
 plt.ion()
 plt.show()
 
 plt.plot([1,1,-0.7,-0.7,1],[-1,-1,-1,-1,-1],[0,1,1,0,0],color="red",linewidth="2")
 
-u1=planifica4(p1, p2, n, s, a, npuntos,teta,d,al,alfa)
-u2=planifica4(p2, p3, n, s, a, npuntos,teta,d,al,alfa)
-u3=planifica4(p3, p4, n, s, a, npuntos,teta,d,al,alfa)
-es1=planifica4(p4, p5, n, s, a, npuntos,teta,d,al,alfa)
-a1=planifica4(p5, p6, n, s, a, npuntos,teta,d,al,alfa)
-a2=planifica4(p6, p7, n, s, a, npuntos,teta,d,al,alfa)
-a3=planifica4(p7, p8, n, s, a, npuntos,teta,d,al,alfa)
-es2=planifica4(p8, p9, n, s, a, npuntos,teta,d,al,alfa)
-a4=planifica4(p9, p10, n, s, a, npuntos,teta,d,al,alfa)
-es3=planifica4(p10, p11, n, s, a, npuntos,teta,d,al,alfa)
-o1=planifica4(p11, p12, n, s, a, npuntos,teta,d,al,alfa)
-o2=planifica4(p12, p13, n, s, a, npuntos,teta,d,al,alfa)
-o3=planifica4(p13, p14, n, s, a, npuntos,teta,d,al,alfa)
-o4=planifica4(p14, p11, n, s, a, npuntos,teta,d,al,alfa)
-oo=planifica4(p11,p1,n,s,a,npuntos,teta,d,al,alfa)
+u1=planifica4(p1, p2, n, s, a, npuntos,q,l0,l1,l2,l3)
+u2=planifica4(p2, p3, n, s, a, npuntos,q,l0,l1,l2,l3)
+u3=planifica4(p3, p4, n, s, a, npuntos,q,l0,l1,l2,l3)
+es1=planifica4(p4, p5, n, s, a, npuntos,q,l0,l1,l2,l3)
+a1=planifica4(p5, p6, n, s, a, npuntos,q,l0,l1,l2,l3)
+a2=planifica4(p6, p7, n, s, a, npuntos,q,l0,l1,l2,l3)
+a3=planifica4(p7, p8, n, s, a, npuntos,q,l0,l1,l2,l3)
+es2=planifica4(p8, p9, n, s, a, npuntos,q,l0,l1,l2,l3)
+a4=planifica4(p9, p10, n, s, a, npuntos,q,l0,l1,l2,l3)
+es3=planifica4(p10, p11, n, s, a, npuntos,q,l0,l1,l2,l3)
+o1=planifica4(p11, p12, n, s, a, npuntos,q,l0,l1,l2,l3)
+o2=planifica4(p12, p13, n, s, a, npuntos,q,l0,l1,l2,l3)
+o3=planifica4(p13, p14, n, s, a, npuntos,q,l0,l1,l2,l3)
+o4=planifica4(p14, p11, n, s, a, npuntos,q,l0,l1,l2,l3)
+oo=planifica4(p11,p1,n,s,a,npuntos,q,l0,l1,l2,l3)
 #print(mat_q)
-animacion4(u1,teta,d,al,alfa,ax,p,1)
-animacion4(u2,teta,d,al,alfa,ax,p,1)
-animacion4(u3,teta,d,al,alfa,ax,p,1)
-animacion4(es1,teta,d,al,alfa,ax,p,0)
-animacion4(a1,teta,d,al,alfa,ax,p,1)
-animacion4(a2,teta,d,al,alfa,ax,p,1)
-animacion4(a3,teta,d,al,alfa,ax,p,1)
-animacion4(es2,teta,d,al,alfa,ax,p,0)
-animacion4(a4,teta,d,al,alfa,ax,p,1)
-animacion4(es3,teta,d,al,alfa,ax,p,0)
-animacion4(o1,teta,d,al,alfa,ax,p,1)
-animacion4(o2,teta,d,al,alfa,ax,p,1)
-animacion4(o3,teta,d,al,alfa,ax,p,1)
-animacion4(o4,teta,d,al,alfa,ax,p,1)
-animacion4(oo,teta,d,al,alfa,ax,p,0)
+animacion4(u1,q,l0,l1,l2,l3,ax,p,1)
+animacion4(u2,q,l0,l1,l2,l3,ax,p,1)
+animacion4(u3,q,l0,l1,l2,l3,ax,p,1)
+animacion4(es1,q,l0,l1,l2,l3,ax,p,0)
+animacion4(a1,q,l0,l1,l2,l3,ax,p,1)
+animacion4(a2,q,l0,l1,l2,l3,ax,p,1)
+animacion4(a3,q,l0,l1,l2,l3,ax,p,1)
+animacion4(es2,q,l0,l1,l2,l3,ax,p,0)
+animacion4(a4,q,l0,l1,l2,l3,ax,p,1)
+animacion4(es3,q,l0,l1,l2,l3,ax,p,0)
+animacion4(o1,q,l0,l1,l2,l3,ax,p,1)
+animacion4(o2,q,l0,l1,l2,l3,ax,p,1)
+animacion4(o3,q,l0,l1,l2,l3,ax,p,1)
+animacion4(o4,q,l0,l1,l2,l3,ax,p,1)
+animacion4(oo,q,l0,l1,l2,l3,ax,p,0)
 
 
 while True:
         time.sleep(1)
+
 
