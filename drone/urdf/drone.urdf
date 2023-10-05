@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<robot  name="drone">
+
+
+  <link name="base_footprint">
+    <inertial>
+      <origin xyz="8.0294E-05 4.1839E-05 0.0019719" rpy="0 0 0"/>
+      <mass value="0.001649"/>
+      <inertia ixx="5.4384E-08" ixy="-2.2982E-09" ixz="-3.3994E-10" iyy="1.0542E-07" iyz="-1.7833E-11" izz="1.5582E-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/base_footprint.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/base_footprint.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+   
+    
+  <link name="td_link">
+    <inertial>
+      <origin xyz="-1.7347E-18 0 5.2455E-05" rpy="0 0 0"/>
+      <mass value="1.8342E-05"/>
+      <inertia ixx="3.2756E-11" ixy="0" ixz="-1.4777E-27" iyy="3.2756E-11" iyz="-2.491E-29" izz="1.2853E-11"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/td_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/td_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  
+  <joint name="td_joint" type="continuous">
+    <origin xyz="-0.013562 -0.016459 0.003" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="td_link"/>
+    <axis xyz="0 0 1"/>
+    <dynamics friction="1.5" damping="1.5" />
+    <limit
+      effort="100"
+      velocity="100"/>
+  </joint>
+  
+  <link name="ti_link">
+    <inertial>
+      <origin xyz="1.7347E-18 2.7756E-17 5.2455E-05" rpy="0 0 0"/>
+      <mass value="1.8342E-05"/>
+      <inertia ixx="3.2756E-11" ixy="0" ixz="-1.4777E-27" iyy="3.2756E-11" iyz="-2.491E-29" izz="1.2853E-11"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/ti_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/ti_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  
+  <joint name="ti_joint" type="continuous">
+    <origin xyz="-0.014347 0.015389 0.003" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="ti_link"/>
+    <axis xyz="0 0 1"/>
+    <dynamics friction="1.5" damping="1.5" />
+    <limit
+      effort="100"
+      velocity="100"/>
+  </joint>
+  
+  
+  <link name="dd_link">
+    <inertial>
+      <origin xyz="1.7347E-18 1.3878E-17 5.2455E-05" rpy="0 0 0"/>
+      <mass value="1.8342E-05"/>
+      <inertia ixx="3.2756E-11" ixy="0" ixz="-1.4777E-27" iyy="3.2756E-11" iyz="-2.491E-29" izz="1.2853E-11"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/dd_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/dd_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+ 
+  
+  <joint name="dd_joint" type="continuous">
+    <origin xyz="0.011553 -0.016398 0.003" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="dd_link"/>
+    <axis xyz="0 0 1"/>
+    <dynamics friction="1.5" damping="1.5" />
+    <limit
+      effort="100"
+      velocity="100"/>
+  </joint>
+  
+  
+  <link name="di_link">
+    <inertial>
+      <origin xyz="0 0 5.2455E-05" rpy="0 0 0"/>
+      <mass value="1.8342E-05"/>
+      <inertia ixx="3.2756E-11" ixy="0" ixz="-1.4779E-27" iyy="3.2756E-11" iyz="8.6205E-30" izz="1.2853E-11"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/di_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone/meshes/di_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+ 
+  
+  <joint name="di_joint" type="continuous">
+    <origin xyz="0.011024 0.017783 0.003" rpy="0 0 0.022689"/>
+    <parent link="base_footprint"/>
+    <child link="di_link"/>
+    <axis xyz="0 0 1"/>
+    <dynamics friction="1.5" damping="1.5" />
+    <limit
+      effort="100"
+      velocity="100"/>
+  </joint>
+  
+  <gazebo reference="base_footprint">
+    <mu1>200</mu1>
+    <mu2>200</mu2>
+    <kp>1000000</kp>
+    <kd>1</kd>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="td_link">
+    <mu1>200</mu1>
+    <mu2>200</mu2>
+    <kp>1000000</kp>
+    <kd>1</kd>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="ti_link">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000</kp>
+    <kd>1</kd>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+    
+  <gazebo reference="dd_link">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000</kp>
+    <kd>1</kd>
+  </gazebo>
+ 
+  <gazebo reference="di_link">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <robotNamespace>drone</robotNamespace>
+            <parameters>$(find drone)/config/joint_names_drone.yaml</parameters>
+        </plugin>
+  </gazebo>
+  
+  <!-- Interfaces de Hardware Necesarias para el Controlador -->
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="td_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <param name="initial_position">0.0</param>  
+            </joint>
+            
+        <joint name="ti_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+
+        <joint name="dd_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+        
+        <joint name="di_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+        
+    </ros2_control> 
+ 
+ 
+  
+</robot>
+
