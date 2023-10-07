@@ -31,8 +31,8 @@ def animacion(mat_q,l0,l1,l2,l3):
     for i in range(n-1):
         mat=mat_q
         q0=mat[0,i]
-        q1=mat[1,i]+np.pi/2
-        q2=mat[2,i]+np.pi/2
+        q1=mat[1,i]
+        q2=mat[2,i]
         q3=mat[3,i]
         q4=mat[4,i]
         q5=mat[5,i]
